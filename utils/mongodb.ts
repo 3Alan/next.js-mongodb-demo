@@ -1,10 +1,14 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, MongoClientOptions } from 'mongodb';
 
-const uri = process.env.MONGODB_URI;
+declare global {
+  var _mongoClientPromise: Promise<MongoClient>;
+}
+
+const uri = process.env.MONGODB_URI as string;
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true
-};
+} as MongoClientOptions;
 
 let client;
 let clientPromise;
@@ -29,4 +33,4 @@ if (process.env.NODE_ENV === 'development') {
 
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client can be shared across functions.
-export default clientPromise;
+export default clientPromise as Promise<MongoClient>;
