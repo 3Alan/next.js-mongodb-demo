@@ -5,7 +5,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const client = await clientPromise;
   const menuListCollection = await client.db('menu_order').collection('menu_list');
 
-  const menuList = menuListCollection.find({}).toArray(); // Returns true or false
+  const menuList = await menuListCollection.find({}).toArray(); // Returns true or false
 
   res.json(menuList);
 }
