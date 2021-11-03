@@ -1,19 +1,12 @@
-import { CircularProgress } from '@mui/material';
 import type { NextPage } from 'next';
-import useSWR from 'swr';
-import FoodCard, { Food } from '../components/FoodCard';
+import FoodList from '../components/FoodList';
+import OrderDetail from '../components/OrderDetail';
 
-const Home: NextPage = props => {
-  const { data: menuList, error } = useSWR('/api/menu-list');
-
-  if (error) return <div>failed to load</div>;
-  if (!menuList) return <CircularProgress />;
-
+const Home: NextPage = () => {
   return (
     <div>
-      {menuList.map((item: Food) => (
-        <FoodCard key={item._id} detail={item} handleAddCart={() => {}} />
-      ))}
+      <OrderDetail />
+      <FoodList />
     </div>
   );
 };
