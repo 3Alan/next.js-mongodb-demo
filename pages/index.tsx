@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import FoodList from '../components/FoodList';
-import OrderDetail from '../components/OrderDetail';
+import ParticipantList from '../components/ParticipantList';
 
 const Home: NextPage = () => {
   return (
     <div>
-      <OrderDetail />
       <FoodList />
+      <ParticipantList />
     </div>
   );
 };
